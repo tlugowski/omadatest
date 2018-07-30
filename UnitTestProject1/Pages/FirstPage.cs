@@ -29,7 +29,7 @@ namespace UnitTestProject1.Pages
         {
         }
 
-       
+        #region PageValues
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool SetCursorPos(int x, int y);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -69,6 +69,20 @@ namespace UnitTestProject1.Pages
         string css_ThanksForDownloadedPDF = "#brick-1600>div>div>div>section>h1";
         string css_DownloadLink = "#brick-1600>div>div>div>section>div>p>a";
         string css_copyright = "#brick-20>div.footer__container--bottom";
+        string css_Garther = "#brick-411>div>div>section:nth-child(5)>a";
+        string css_linkGarther = "#brick-411>div>div>section:nth-child(5)>a";
+        string css_hotTopicsHeader = "#brick-1502>div>div>div>section>div>h3";
+        string text_hotTopicsHeader = "Hot topics to be covered at Gartner's IAM Summit:";
+        string css_searchBox = ".header__search > input:nth-child(1)";
+        string text_searchBox = "gartner";
+        string css_searchLabel = ".breadcrumbs__menuitem > span:nth-child(1)";
+        string css_resultTable = ".search-results__content";
+        string css_resultRow = "search-results__item";
+        string css_tableResultClassName = "cases__item";
+        string text_actualDateInText = "#content>div:nth-child(3)>div>div";
+        string text_windowsTitleProcessingOf = "Omada | Processing of Personal Data";
+        string text_windowsTitleLeadingProvider = "Contact Omada | Leading Provider of IT Security Solutions";
+        #endregion
 
         internal void FillDataAndDownloadPDF()
         {
@@ -180,7 +194,6 @@ namespace UnitTestProject1.Pages
             CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["FirstScreenPath"]);
         }
 
-
         private void GoToContact()
         {
             ClickOn(css_ContactBtn);
@@ -198,13 +211,13 @@ namespace UnitTestProject1.Pages
         internal void GoToLinkAndVerifyResult()
         {
             PageGoDown(11);
-            WaitUntilElementClicable("#brick-411>div>div>section:nth-child(5)>a");
-            WaitForTextOnPage("#brick-411>div>div>section:nth-child(5)>a");
-            ClickOn("#brick-411>div>div>section:nth-child(5)>a");//link
+            WaitUntilElementClicable(css_Garther);
+            WaitForTextOnPage(css_Garther);
+            ClickOn(css_linkGarther);
             PageGoDown(10);
-            WaitForTextOnPage("#brick-1502>div>div>div>section>div>h3");
+            WaitForTextOnPage(css_hotTopicsHeader); 
             WaitForAllScriptsLoaded();
-            CheckIfContainsText("Hot topics to be covered at Gartner's IAM Summit:", "#brick-1502>div>div>div>section>div>h3");
+            CheckIfContainsText(text_hotTopicsHeader, css_hotTopicsHeader);
             WaitForAllScriptsLoaded();
         }
 
@@ -226,8 +239,6 @@ namespace UnitTestProject1.Pages
             WaitForTextOnPage(css_OmadaNews);
         }
 
-        
-
         public void GoToPage()
         {
             NavigateTo(ConfigurationManager.AppSettings["url"]);
@@ -237,7 +248,7 @@ namespace UnitTestProject1.Pages
 
         internal void ExecuteSearch()
         {
-            ClearAndFillField(".header__search>input:nth-child(1)", "gartner");
+            ClearAndFillField(css_searchBox, text_searchBox);
             Submit();
             CheckTableSearchingResult();
         }
@@ -247,9 +258,9 @@ namespace UnitTestProject1.Pages
         }
         private bool CheckIfTableReturnExpectedRows()
         {
-            WaitForTextOnPage(".breadcrumbs__menuitem > span:nth-child(1)");
-            IWebElement tableElement = driver.FindElement(By.CssSelector(".search-results__content"));
-            IList<IWebElement> tableRow = tableElement.FindElements(By.ClassName("search-results__item"));
+            WaitForTextOnPage(css_searchLabel);
+            IWebElement tableElement = driver.FindElement(By.CssSelector(css_resultTable));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.ClassName(css_resultRow));
             if (tableRow.Count < 2)
             {
                 return false;
@@ -261,8 +272,8 @@ namespace UnitTestProject1.Pages
         }
         private bool CheckIfTableContainsText()
         {
-            IWebElement tableElement = driver.FindElement(By.CssSelector("#content>div:nth-child(3)>div>div"));
-            IList<IWebElement> tableRow = tableElement.FindElements(By.ClassName("cases__item"));
+            IWebElement tableElement = driver.FindElement(By.CssSelector(text_actualDateInText));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.ClassName(css_tableResultClassName));
             if (tableRow.ToList().Any(span => span.Text.Contains(actualTime)))
             {
                 return true;
@@ -289,49 +300,48 @@ namespace UnitTestProject1.Pages
         {
             SetCursorPos(xposDown, yposDown);
             mouse_event(MOUSEEVENTF_LEFTDOWN, xposDown, yposDown, 0, 0);
-            System.Threading.Thread.Sleep(1000);
+            StaticWait(1000);
         }
         public void LeftMouseClickUp(int xposUp, int yposUp)
         {
             SetCursorPos(xposUp, yposUp);
             mouse_event(MOUSEEVENTF_LEFTUP, xposUp, yposUp, 0, 0);
-            System.Threading.Thread.Sleep(1000);
+            StaticWait(1000);
         }
         public void MouseMove(int xposUp, int yposUp)
         {
             mouse_event(MOUSEEVENTF_MOVE, xposUp, yposUp, 0, 0);
-            System.Threading.Thread.Sleep(1000);
+            StaticWait(1000);
         }
 
         private const int MOUSEEVENTF_WHEEL = 0x0800;
         public void MouseWhileDown()
         {
             mouse_event(MOUSEEVENTF_WHEEL, 0, 0, 0, 0);
-            System.Threading.Thread.Sleep(4000);
+            StaticWait(4000);
         }
 
         internal void OpenPageInNewTab()
         {
             WaitForTextOnPage(css_ReadPrivacyPolicy);
             RightClickOn(css_ReadPrivacyPolicy);
-            System.Threading.Thread.Sleep(500);
+            StaticWait(500);
             WindowsSenKeys("{DOWN}{ENTER}");
-            System.Threading.Thread.Sleep(4000);
-            SwitchToWindow(driver => driver.Title == "Omada | Processing of Personal Data");
+            StaticWait(1000);
+            SwitchToWindow(driver => driver.Title == text_windowsTitleProcessingOf);
             WaitForTextOnPage(css_WebsitePrivacyPolicyText);
             WaitForAllScriptsLoaded();
         }
 
         internal void MakeSurePrivacyPolicyNotAppearAgain()
         {
-            SwitchToWindow(driver => driver.Title == "Contact Omada | Leading Provider of IT Security Solutions");
+            SwitchToWindow(driver => driver.Title == text_windowsTitleLeadingProvider);
             WaitForAllScriptsLoaded();
             WaitForTextOnPage(css_ReadPrivacyCloseBtn);
             ClickOn(css_ReadPrivacyCloseBtn);
             ReflashThePage();
             WaitForAllScriptsLoaded();
             CheckIsElementNotDisplayed(css_ReadPrivacyCloseBtn);
-            System.Threading.Thread.Sleep(4000);
         }
 
         private void ReflashThePage()

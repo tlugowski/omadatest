@@ -19,23 +19,11 @@ namespace UnitTestProject1
     public class BaseTest
     {
         protected IWebDriver Driver { get; set; }
-        private TestContext testContextInstance;
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
 
         [SetUp]
         public void Initalize()
         {
-            string browser = "Chrome";
+            string browser = ConfigurationManager.AppSettings["Browser"];
             switch(browser)
             {
                 case "Chrome":

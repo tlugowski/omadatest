@@ -12,9 +12,6 @@ namespace UnitTestProject1.Pages
     [TestFixture]
     public class OmadaTests : BaseTest
     {
-
-
-        [TestCategory("FireFox")]
         [Test]
         public void OmadaPageTest()
         {
@@ -28,12 +25,5 @@ namespace UnitTestProject1.Pages
             test.MakeSurePrivacyPolicyNotAppearAgain();
             test.FillDataAndDownloadPDF();
         }
-
-
-
-
-
-
-
     }
 }

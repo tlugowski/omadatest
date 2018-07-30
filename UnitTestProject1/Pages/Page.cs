@@ -51,7 +51,6 @@ namespace UnitTestProject1.Pages
             wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(selector)));
         }
 
-
         public void WaitForTextOnPage(String selector)
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
@@ -68,11 +67,13 @@ namespace UnitTestProject1.Pages
                 return true;
             });
         }
+
         public void WaitForTextOnPageByClassName(String classname)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             var element = wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(classname)));
         }
+
         public void MoveTheSubmenu(string selector)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
@@ -85,6 +86,7 @@ namespace UnitTestProject1.Pages
         {
             driver.FindElement(By.CssSelector(element)).Click();
         }
+
         public void RightClickOn(String selector)
         {
             Actions action = new Actions(driver);
@@ -125,11 +127,6 @@ namespace UnitTestProject1.Pages
         {
             driver.Navigate().GoToUrl(url);
         }
-        public void AssertPdaDateIsEqualTo(string expectedText, string cssSelector)
-        {
-            var fiu = driver.FindElement(By.CssSelector(cssSelector)).GetAttribute("value").ToString();
-            Assert.AreEqual(expectedText, fiu);
-        }
 
         public void AssertFieldTextIsEqualTo(string expectedText, string cssSelector)
         {
@@ -166,6 +163,7 @@ namespace UnitTestProject1.Pages
                 System.Windows.Forms.SendKeys.SendWait("{DOWN}");
             }
         }
+
         public void SwitchToWindow(Expression<Func<IWebDriver, bool>> predicateExp)
         {
             var predicate = predicateExp.Compile();
@@ -177,9 +175,9 @@ namespace UnitTestProject1.Pages
                     return;
                 }
             }
-
             throw new ArgumentException(string.Format("Unable to find window with condition: '{0}'", predicateExp.Body));
         }
+
         public void CheckIsElementNotDisplayed(string notExpectedObject)
         {
             Assert.AreEqual(false, driver.FindElement(By.CssSelector(notExpectedObject)).Displayed);
@@ -189,6 +187,7 @@ namespace UnitTestProject1.Pages
         {
             driver.FindElement(By.XPath("//a[contains(@href,'" + partialHref + "')]")).Click();
         }
+
         public void SelectElementEnabled(string elementselector, string text)
         {
             var zmienna = driver.FindElement(By.CssSelector(elementselector));
@@ -201,6 +200,7 @@ namespace UnitTestProject1.Pages
                 }
             }
         }
+
         public void SetCheckboxChecked(string elementSelector, bool isChecked)
         {
             if (GetCheckboxChecked(elementSelector) != isChecked)
@@ -212,15 +212,21 @@ namespace UnitTestProject1.Pages
         {
             return driver.FindElement(By.CssSelector(elementSelector)).Selected;
         }
+
         public void SlideSlider(string Selector)
         {
             IWebElement slider = driver.FindElement(By.CssSelector(Selector));
             Actions action = new Actions(driver);
             action.ClickAndHold(slider);
-            System.Threading.Thread.Sleep(500);
+            StaticWait(500);
             action.MoveByOffset(100, 0).Perform();
-            System.Threading.Thread.Sleep(500);
+            StaticWait(500);
             action.Release().Build().Perform();
+        }
+
+        public void StaticWait(int time)
+        {
+            System.Threading.Thread.Sleep(time);
         }
 
     }
