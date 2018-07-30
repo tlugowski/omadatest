@@ -155,15 +155,37 @@ namespace UnitTestProject1.Pages
         {
             System.Windows.Forms.SendKeys.SendWait(text);
         }
+        public bool isClickable(IWebElement selector, IWebDriver driver)
+        {
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+                wait.Until(ExpectedConditions.ElementToBeClickable(selector));
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        public void PageGoDownWhenClickable(string selector)
+        {
+            if(!isClickable(driver.FindElement(By.CssSelector(selector)),driver))
+            {
+                System.Windows.Forms.SendKeys.SendWait("{DOWN}");
+                StaticWait(500);
+            }
 
-        public void PageGoDown(int downStep)
+        }
+        public void PageGoDown(string selector, string key, int downStep)
         {
             for (int i = 1; i < downStep; i++)
             {
-                System.Windows.Forms.SendKeys.SendWait("{DOWN}");
+                System.Windows.Forms.SendKeys.SendWait(key);
+              //  StaticWait(100);
             }
         }
-
+    
         public void SwitchToWindow(Expression<Func<IWebDriver, bool>> predicateExp)
         {
             var predicate = predicateExp.Compile();

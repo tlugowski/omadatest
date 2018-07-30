@@ -88,10 +88,10 @@ namespace UnitTestProject1.Pages
         {
             NavigateToCases();
             ClickEccoCompanyDownloadBtn();
-            PageGoDown(24);
+            PageGoDown(css_DownloadPDFBtn,"{DOWN}",24);
             WaitForTextOnPage(css_DownloadPDFBtn);
             FillForm();
-            PageGoDown(6);
+            PageGoDown(css_Slider, "{DOWN}", 6);
             WaitForTextOnPage(css_Slider);
             SlideSlider(css_Slider);
             ClickOn(css_DownloadPDFBtn);
@@ -150,6 +150,15 @@ namespace UnitTestProject1.Pages
             ChangeMapLocationAndTakeScreenshots();
         }
 
+        private void SetupLocation(out int startYLocationInMap, out int oldXLocation, out int newXLocation, out int newYLocation)
+        {
+            var locationGermanyButton = driver.FindElement(By.CssSelector(css_GermanyBtn)).Location;
+            startYLocationInMap = locationGermanyButton.Y = locationGermanyButton.Y + 300;
+            oldXLocation = locationGermanyButton.X;
+            newXLocation = oldXLocation + 30;
+            newYLocation = startYLocationInMap + 10;
+        }
+
         private void ChangeMapLocationAndTakeScreenshots()
         {
             WaitUntilElementClicable(css_GermanyBtn);
@@ -163,32 +172,24 @@ namespace UnitTestProject1.Pages
             CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["SecondtMapPositionPath"]);
         }
 
-        private void SetupLocation(out int startYLocationInMap, out int oldXLocation, out int newXLocation, out int newYLocation)
-        {
-            var locationGermanyButton = driver.FindElement(By.CssSelector(css_GermanyBtn)).Location;
-            startYLocationInMap = locationGermanyButton.Y = locationGermanyButton.Y + 300;
-            oldXLocation = locationGermanyButton.X;
-            newXLocation = oldXLocation + 30;
-            newYLocation = startYLocationInMap + 10;
-        }
-
-        private void GoToSecondLocation(int newXLocation, int newYLocation)
-        {
-            MouseMove(newXLocation, newYLocation);
-            GoToPositionOnPage(newXLocation, newYLocation);
-            LeftMouseClickUp(newXLocation, newYLocation);
-        }
-
         private void GoToFirstLocation(int startYLocationInMap, int oldXLocation)
         {
             GoToPositionOnPage(oldXLocation, startYLocationInMap);
             LeftMouseClickDown(oldXLocation, startYLocationInMap);
         }
 
+        private void GoToSecondLocation(int newXLocation, int newYLocation)
+        {
+            StaticWait(1000);
+            MouseMove(newXLocation, newYLocation);
+            GoToPositionOnPage(newXLocation, newYLocation);
+            LeftMouseClickUp(newXLocation, newYLocation);
+        }
+
         private void GoToUsWest()
         {
             ClickOn(css_UswestBtn);
-            PageGoDown(5);
+            PageGoDown(css_UnitedStatesWestText, "{DOWN}", 5);
             WaitForTextOnPage(css_UnitedStatesWestText);
             WaitForAllScriptsLoaded();
             CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["FirstScreenPath"]);
@@ -210,11 +211,12 @@ namespace UnitTestProject1.Pages
 
         internal void GoToLinkAndVerifyResult()
         {
-            PageGoDown(11);
+            PageGoDown(css_Garther, "{DOWN}", 10);
+            WaitForAllScriptsLoaded();
             WaitUntilElementClicable(css_Garther);
             WaitForTextOnPage(css_Garther);
             ClickOn(css_linkGarther);
-            PageGoDown(10);
+            PageGoDown(css_hotTopicsHeader, "{DOWN}", 10);
             WaitForTextOnPage(css_hotTopicsHeader); 
             WaitForAllScriptsLoaded();
             CheckIfContainsText(text_hotTopicsHeader, css_hotTopicsHeader);
@@ -329,8 +331,8 @@ namespace UnitTestProject1.Pages
             WindowsSenKeys("{DOWN}{ENTER}");
             StaticWait(1000);
             SwitchToWindow(driver => driver.Title == text_windowsTitleProcessingOf);
-            WaitForTextOnPage(css_WebsitePrivacyPolicyText);
             WaitForAllScriptsLoaded();
+            WaitForTextOnPage(css_WebsitePrivacyPolicyText);
         }
 
         internal void MakeSurePrivacyPolicyNotAppearAgain()
@@ -348,8 +350,5 @@ namespace UnitTestProject1.Pages
         {
             WindowsSenKeys("{F5}");
         }
-
-
-
     }
 }
