@@ -19,8 +19,9 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
+using System.Configuration;
 
-namespace UnitTestProject1
+namespace UnitTestProject1.Pages
 {
     public class FirstPage : Page
     {
@@ -28,65 +29,7 @@ namespace UnitTestProject1
         {
         }
 
-        internal void FillDataAndDownloadPDF()
-        {
-            NavigateToCases();
-            ClickEccoCompanyDownloadBtn();
-            PageGoDown(24);
-            WaitForTextOnPage(CSS_DownloadPDFBtn);
-            FillForm();
-            PageGoDown(6);
-            WaitForTextOnPage(CSS_Slider);
-            SlideSlider(CSS_Slider);
-            ClickOn(CSS_DownloadPDFBtn);
-            WaitForTextOnPage(CSS_ThanksForDownloadedPDF);
-            ClickOn(CSS_DownloadLink);
-            CheckIfFileDownloaded();
-            System.Threading.Thread.Sleep(13000);
-        }
-
-        private bool CheckIfFileDownloaded()
-        {
-            var user = Environment.ExpandEnvironmentVariables("%userprofile%").Replace("C:\\Users\\", "");
-            var destiny = @"C:\Users\" + user + @"\Downloads\" + "Omada-Case-ECCO-Shoes.pdf";
-            if (File.Exists(destiny))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private void FillForm()
-        {
-            ClearAndFillField(CSS_JobTitle,"ExampleJob");
-            ClearAndFillField(CSS_FirstName, "ExampleName");
-            ClearAndFillField(CSS_LastName, "ExampleSurname");
-            ClearAndFillField(CSS_Email, "Example@example.com");
-            ClearAndFillField(CSS_BusinessPhone, "111 111 1111");
-            ClearAndFillField(CSS_CompanyName, "ExampleCompany");
-            SelectElementEnabled(CSS_Country, "Poland");
-            SetCheckboxChecked(checkBoxAccepted,true);
-        }
-
-        private void ClickEccoCompanyDownloadBtn()
-        {
-            ClickByPartialHref(eccoPartialHref);
-            WaitForTextOnPage(CSS_EccoLogo);
-            WaitForAllScriptsLoaded();
-        }
-
-        private void NavigateToCases()
-        {
-            MoveTheSubmenu(CSS_MoreBtn);
-            WaitForTextOnPage(CSS_CasesBtn);
-            WaitUntilElementClicable(CSS_CasesBtn);
-            ClickOn(CSS_CasesBtn);
-            WaitForTextOnPage(CSS_OmadaCusotersText);
-        }
-
+       
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         static extern bool SetCursorPos(int x, int y);
         [System.Runtime.InteropServices.DllImport("user32.dll")]
@@ -125,6 +68,65 @@ namespace UnitTestProject1
         string CSS_Slider = "#Slider";
         string CSS_ThanksForDownloadedPDF = "#brick-1600>div>div>div>section>h1";
         string CSS_DownloadLink = "#brick-1600>div>div>div>section>div>p>a";
+        string css_copyright = "#brick-20>div.footer__container--bottom";
+
+        internal void FillDataAndDownloadPDF()
+        {
+            NavigateToCases();
+            ClickEccoCompanyDownloadBtn();
+            PageGoDown(24);
+            WaitForTextOnPage(CSS_DownloadPDFBtn);
+            FillForm();
+            PageGoDown(6);
+            WaitForTextOnPage(CSS_Slider);
+            SlideSlider(CSS_Slider);
+            ClickOn(CSS_DownloadPDFBtn);
+            WaitForTextOnPage(CSS_ThanksForDownloadedPDF);
+            ClickOn(CSS_DownloadLink);
+            CheckIfFileDownloaded();
+        }
+
+        private bool CheckIfFileDownloaded()
+        {
+            var user = Environment.ExpandEnvironmentVariables("%userprofile%").Replace("C:\\Users\\", "");
+            var destiny = @"C:\Users\" + user + @"\Downloads\" + "Omada-Case-ECCO-Shoes.pdf";
+            if (File.Exists(destiny))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void FillForm()
+        {
+            ClearAndFillField(CSS_JobTitle, ConfigurationManager.AppSettings["Job"]);
+            ClearAndFillField(CSS_FirstName, ConfigurationManager.AppSettings["Name"]);
+            ClearAndFillField(CSS_LastName, ConfigurationManager.AppSettings["LastName"]);
+            ClearAndFillField(CSS_Email, ConfigurationManager.AppSettings["Email"]);
+            ClearAndFillField(CSS_BusinessPhone, ConfigurationManager.AppSettings["PhoneNumber"]);
+            ClearAndFillField(CSS_CompanyName, ConfigurationManager.AppSettings["CompanyName"]);
+            SelectElementEnabled(CSS_Country, ConfigurationManager.AppSettings["Country"]);
+            SetCheckboxChecked(checkBoxAccepted, true);
+        }
+    
+        private void ClickEccoCompanyDownloadBtn()
+        {
+            ClickByPartialHref(eccoPartialHref);
+            WaitForTextOnPage(CSS_EccoLogo);
+            WaitForAllScriptsLoaded();
+        }
+
+        private void NavigateToCases()
+        {
+            MoveTheSubmenu(CSS_MoreBtn);
+            WaitForTextOnPage(CSS_CasesBtn);
+            WaitUntilElementClicable(CSS_CasesBtn);
+            ClickOn(CSS_CasesBtn);
+            WaitForTextOnPage(CSS_OmadaCusotersText);
+        }
 
         internal void GoToHomePageAndChangeLocation()
         {
@@ -141,10 +143,10 @@ namespace UnitTestProject1
             NewMethod(out startYLocationInMap, out oldXLocation, out newXLocation, out newYLocation);
             GoToFirstLocation(startYLocationInMap, oldXLocation);
             WaitForAllScriptsLoaded();
-            CaptureGlobalScreenAndSave(@"D:\FirstMapPosition.bmp");
+            CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["FirstMapPositionPath"]);
             GoToSecondLocation(newXLocation, newYLocation);
             WaitForAllScriptsLoaded();
-            CaptureGlobalScreenAndSave(@"D:\SecondMapPosition.bmp");
+            CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["SecondtMapPositionPath"]);
         }
 
         private void NewMethod(out int startYLocationInMap, out int oldXLocation, out int newXLocation, out int newYLocation)
@@ -224,7 +226,7 @@ namespace UnitTestProject1
             WaitForTextOnPage(CSS_OmadaNews);
         }
 
-        public static string css_copyright = "#brick-20>div.footer__container--bottom";
+        
 
         public void GoToPage()
         {
@@ -337,22 +339,7 @@ namespace UnitTestProject1
             WindowsSenKeys("{F5}");
         }
 
-        public class Win32
-        {
-            [DllImport("User32.Dll")]
-            public static extern long SetCursorPos(int x, int y);
 
-            [DllImport("User32.Dll")]
-            public static extern bool ClientToScreen(IntPtr hWnd, ref POINT point);
-
-            [StructLayout(LayoutKind.Sequential)]
-            public struct POINT
-            {
-                public int x;
-                public int y;
-            }
-
-        }
 
     }
 }

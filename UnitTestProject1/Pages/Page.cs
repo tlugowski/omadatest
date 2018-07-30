@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTestProject1
+namespace UnitTestProject1.Pages
 {
     public class Page
     {

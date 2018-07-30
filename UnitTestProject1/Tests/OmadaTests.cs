@@ -7,7 +7,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 
 
-namespace UnitTestProject1
+namespace UnitTestProject1.Pages
 {
     [TestFixture]
     public class OmadaTests : BaseTest
