@@ -39,35 +39,35 @@ namespace UnitTestProject1.Pages
         public const int MOUSEEVENTF_MOVE = 0x001;
 
         string actualTime = DateTime.Now.ToString("MMMM yyyy", CultureInfo.CreateSpecificCulture("en-US"));
-        string CSS_MoreBtn = "#navigation>ul>li.header__menuitem--megamenu.js-menuitem.is-right-aligned.has-submenu>a";
-        string CSS_NextInMoreBtn = "li.header__menuitem--megamenu:nth-child(5)>div:nth-child(3)>ul:nth-child(1)>div:nth-child(5)>div:nth-child(2)>a:nth-child(1)";
-        string CSS_OmadaNews = "#brick-701>div>h1";
-        string CSS_HomeLogo = "body>header>div.header__container>div>div.header__column--home>a>img";
-        string CSS_SecurityLogo = "#content>div.brick.spots--variant4>div>div>div:nth-child(1)>section>img";
-        string CSS_ContactBtn = "body>header>div.header__function-nav>div.header__function-nav--right>ul>li:nth-child(1)>a";
-        string CSS_UswestBtn = "#brick-3475>div>div>div.tabmenu__menu>span:nth-child(3)";
-        string CSS_UnitedStatesWestText = "#brick-3475>div>div>div.tabmenu__tabs>div.tabmenu__tab.selected>div>section>div>div>div:nth-child(1)>div>span";
-        string ClassBottomActions = "bottom-actions";
-        string CSS_GermanyBtn = "#brick-3475>div>div>div.tabmenu__menu>span:nth-child(4)";
-        string CSS_ReadPrivacyPolicy = ".cookiebar__read-more";
-        string CSS_WebsitePrivacyPolicyText = "#brick-10308>div>div>div>section>h1";
-        string CSS_ReadPrivacyCloseBtn = ".cookiebar__button";
-        string CSS_CasesBtn = "#navigation>ul>li.header__menuitem--megamenu.js-menuitem.is-right-aligned.is-selected.has-submenu>div>ul>div:nth-child(3)>div:nth-child(2)>a";
-        string CSS_OmadaCusotersText = "#brick-1765>div>h1";
+        string css_MoreBtn = "#navigation>ul>li.header__menuitem--megamenu.js-menuitem.is-right-aligned.has-submenu>a";
+        string css_NextInMoreBtn = "li.header__menuitem--megamenu:nth-child(5)>div:nth-child(3)>ul:nth-child(1)>div:nth-child(5)>div:nth-child(2)>a:nth-child(1)";
+        string css_OmadaNews = "#brick-701>div>h1";
+        string css_HomeLogo = "body>header>div.header__container>div>div.header__column--home>a>img";
+        string css_SecurityLogo = "#content>div.brick.spots--variant4>div>div>div:nth-child(1)>section>img";
+        string css_ContactBtn = "body>header>div.header__function-nav>div.header__function-nav--right>ul>li:nth-child(1)>a";
+        string css_UswestBtn = "#brick-3475>div>div>div.tabmenu__menu>span:nth-child(3)";
+        string css_UnitedStatesWestText = "#brick-3475>div>div>div.tabmenu__tabs>div.tabmenu__tab.selected>div>section>div>div>div:nth-child(1)>div>span";
+        string classBottomActions = "bottom-actions";
+        string css_GermanyBtn = "#brick-3475>div>div>div.tabmenu__menu>span:nth-child(4)";
+        string css_ReadPrivacyPolicy = ".cookiebar__read-more";
+        string css_WebsitePrivacyPolicyText = "#brick-10308>div>div>div>section>h1";
+        string css_ReadPrivacyCloseBtn = ".cookiebar__button";
+        string css_CasesBtn = "#navigation>ul>li.header__menuitem--megamenu.js-menuitem.is-right-aligned.is-selected.has-submenu>div>ul>div:nth-child(3)>div:nth-child(2)>a";
+        string css_OmadaCusotersText = "#brick-1765>div>h1";
         string eccoPartialHref = "/en-us/more/customers/cases/ecco-case";
-        string CSS_EccoLogo = "#brick-1595>div>h1";
-        string CSS_DownloadPDFBtn = "#btnSubmit";
-        string CSS_JobTitle = "#f_84ef53b4f80ee71180eac4346bac2ebc";
-        string CSS_FirstName = "#f_7bb79f2f2aa5e61180e4c4346bac7e3c";
-        string CSS_LastName = "#f_501281762aa5e61180e4c4346bac7e3c";
-        string CSS_Email = "#f_511a8b932aa5e61180e4c4346bac7e3c";
-        string CSS_BusinessPhone = "#f_5d3af1ac19a8e61180dfc4346bad20a4";
-        string CSS_CompanyName = "#f_42b109e9c1a5e61180e4c4346bac7e3c";
-        string CSS_Country = "#f_61d4da016ca6e61180dfc4346bad20a4";
+        string css_EccoLogo = "#brick-1595>div>h1";
+        string css_DownloadPDFBtn = "#btnSubmit";
+        string css_JobTitle = "#f_84ef53b4f80ee71180eac4346bac2ebc";
+        string css_FirstName = "#f_7bb79f2f2aa5e61180e4c4346bac7e3c";
+        string css_LastName = "#f_501281762aa5e61180e4c4346bac7e3c";
+        string css_Email = "#f_511a8b932aa5e61180e4c4346bac7e3c";
+        string css_BusinessPhone = "#f_5d3af1ac19a8e61180dfc4346bad20a4";
+        string css_CompanyName = "#f_42b109e9c1a5e61180e4c4346bac7e3c";
+        string css_Country = "#f_61d4da016ca6e61180dfc4346bad20a4";
         string checkBoxAccepted = "#f_3557f512c2a5e61180e4c4346bac7e3c";
-        string CSS_Slider = "#Slider";
-        string CSS_ThanksForDownloadedPDF = "#brick-1600>div>div>div>section>h1";
-        string CSS_DownloadLink = "#brick-1600>div>div>div>section>div>p>a";
+        string css_Slider = "#Slider";
+        string css_ThanksForDownloadedPDF = "#brick-1600>div>div>div>section>h1";
+        string css_DownloadLink = "#brick-1600>div>div>div>section>div>p>a";
         string css_copyright = "#brick-20>div.footer__container--bottom";
 
         internal void FillDataAndDownloadPDF()
@@ -75,14 +75,14 @@ namespace UnitTestProject1.Pages
             NavigateToCases();
             ClickEccoCompanyDownloadBtn();
             PageGoDown(24);
-            WaitForTextOnPage(CSS_DownloadPDFBtn);
+            WaitForTextOnPage(css_DownloadPDFBtn);
             FillForm();
             PageGoDown(6);
-            WaitForTextOnPage(CSS_Slider);
-            SlideSlider(CSS_Slider);
-            ClickOn(CSS_DownloadPDFBtn);
-            WaitForTextOnPage(CSS_ThanksForDownloadedPDF);
-            ClickOn(CSS_DownloadLink);
+            WaitForTextOnPage(css_Slider);
+            SlideSlider(css_Slider);
+            ClickOn(css_DownloadPDFBtn);
+            WaitForTextOnPage(css_ThanksForDownloadedPDF);
+            ClickOn(css_DownloadLink);
             CheckIfFileDownloaded();
         }
 
@@ -102,30 +102,30 @@ namespace UnitTestProject1.Pages
 
         private void FillForm()
         {
-            ClearAndFillField(CSS_JobTitle, ConfigurationManager.AppSettings["Job"]);
-            ClearAndFillField(CSS_FirstName, ConfigurationManager.AppSettings["Name"]);
-            ClearAndFillField(CSS_LastName, ConfigurationManager.AppSettings["LastName"]);
-            ClearAndFillField(CSS_Email, ConfigurationManager.AppSettings["Email"]);
-            ClearAndFillField(CSS_BusinessPhone, ConfigurationManager.AppSettings["PhoneNumber"]);
-            ClearAndFillField(CSS_CompanyName, ConfigurationManager.AppSettings["CompanyName"]);
-            SelectElementEnabled(CSS_Country, ConfigurationManager.AppSettings["Country"]);
+            ClearAndFillField(css_JobTitle, ConfigurationManager.AppSettings["Job"]);
+            ClearAndFillField(css_FirstName, ConfigurationManager.AppSettings["Name"]);
+            ClearAndFillField(css_LastName, ConfigurationManager.AppSettings["LastName"]);
+            ClearAndFillField(css_Email, ConfigurationManager.AppSettings["Email"]);
+            ClearAndFillField(css_BusinessPhone, ConfigurationManager.AppSettings["PhoneNumber"]);
+            ClearAndFillField(css_CompanyName, ConfigurationManager.AppSettings["CompanyName"]);
+            SelectElementEnabled(css_Country, ConfigurationManager.AppSettings["Country"]);
             SetCheckboxChecked(checkBoxAccepted, true);
         }
     
         private void ClickEccoCompanyDownloadBtn()
         {
             ClickByPartialHref(eccoPartialHref);
-            WaitForTextOnPage(CSS_EccoLogo);
+            WaitForTextOnPage(css_EccoLogo);
             WaitForAllScriptsLoaded();
         }
 
         private void NavigateToCases()
         {
-            MoveTheSubmenu(CSS_MoreBtn);
-            WaitForTextOnPage(CSS_CasesBtn);
-            WaitUntilElementClicable(CSS_CasesBtn);
-            ClickOn(CSS_CasesBtn);
-            WaitForTextOnPage(CSS_OmadaCusotersText);
+            MoveTheSubmenu(css_MoreBtn);
+            WaitForTextOnPage(css_CasesBtn);
+            WaitUntilElementClicable(css_CasesBtn);
+            ClickOn(css_CasesBtn);
+            WaitForTextOnPage(css_OmadaCusotersText);
         }
 
         internal void GoToHomePageAndChangeLocation()
@@ -138,7 +138,7 @@ namespace UnitTestProject1.Pages
 
         private void ChangeMapLocationAndTakeScreenshots()
         {
-            WaitUntilElementClicable(CSS_GermanyBtn);
+            WaitUntilElementClicable(css_GermanyBtn);
             int startYLocationInMap, oldXLocation, newXLocation, newYLocation;
             NewMethod(out startYLocationInMap, out oldXLocation, out newXLocation, out newYLocation);
             GoToFirstLocation(startYLocationInMap, oldXLocation);
@@ -151,7 +151,7 @@ namespace UnitTestProject1.Pages
 
         private void NewMethod(out int startYLocationInMap, out int oldXLocation, out int newXLocation, out int newYLocation)
         {
-            var locationGermanyButton = driver.FindElement(By.CssSelector(CSS_GermanyBtn)).Location;
+            var locationGermanyButton = driver.FindElement(By.CssSelector(css_GermanyBtn)).Location;
             startYLocationInMap = locationGermanyButton.Y = locationGermanyButton.Y + 300;
             oldXLocation = locationGermanyButton.X;
             newXLocation = oldXLocation + 30;
@@ -173,9 +173,9 @@ namespace UnitTestProject1.Pages
 
         private void GoToUsWest()
         {
-            ClickOn(CSS_UswestBtn);
+            ClickOn(css_UswestBtn);
             PageGoDown(5);
-            WaitForTextOnPage(CSS_UnitedStatesWestText);
+            WaitForTextOnPage(css_UnitedStatesWestText);
             WaitForAllScriptsLoaded();
             CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["FirstScreenPath"]);
         }
@@ -183,15 +183,15 @@ namespace UnitTestProject1.Pages
 
         private void GoToContact()
         {
-            ClickOn(CSS_ContactBtn);
-            WaitForTextOnPage(CSS_UswestBtn);
+            ClickOn(css_ContactBtn);
+            WaitForTextOnPage(css_UswestBtn);
             WaitForAllScriptsLoaded();
         }
 
         private void GoToHomePage()
         {
-            ClickOn(CSS_HomeLogo);
-            WaitForTextOnPage(CSS_SecurityLogo);
+            ClickOn(css_HomeLogo);
+            WaitForTextOnPage(css_SecurityLogo);
             WaitForAllScriptsLoaded();
         }
 
@@ -219,11 +219,11 @@ namespace UnitTestProject1.Pages
         }
         private void NavigateToNews()
         {
-            MoveTheSubmenu(CSS_MoreBtn);
-            WaitForTextOnPage(CSS_NextInMoreBtn);
-            WaitUntilElementClicable(CSS_NextInMoreBtn);
-            ClickOn(CSS_NextInMoreBtn);
-            WaitForTextOnPage(CSS_OmadaNews);
+            MoveTheSubmenu(css_MoreBtn);
+            WaitForTextOnPage(css_NextInMoreBtn);
+            WaitUntilElementClicable(css_NextInMoreBtn);
+            ClickOn(css_NextInMoreBtn);
+            WaitForTextOnPage(css_OmadaNews);
         }
 
         
@@ -312,13 +312,13 @@ namespace UnitTestProject1.Pages
 
         internal void OpenPageInNewTab()
         {
-            WaitForTextOnPage(CSS_ReadPrivacyPolicy);
-            RightClickOn(CSS_ReadPrivacyPolicy);
+            WaitForTextOnPage(css_ReadPrivacyPolicy);
+            RightClickOn(css_ReadPrivacyPolicy);
             System.Threading.Thread.Sleep(500);
             WindowsSenKeys("{DOWN}{ENTER}");
             System.Threading.Thread.Sleep(4000);
             SwitchToWindow(driver => driver.Title == "Omada | Processing of Personal Data");
-            WaitForTextOnPage(CSS_WebsitePrivacyPolicyText);
+            WaitForTextOnPage(css_WebsitePrivacyPolicyText);
             WaitForAllScriptsLoaded();
         }
 
@@ -326,11 +326,11 @@ namespace UnitTestProject1.Pages
         {
             SwitchToWindow(driver => driver.Title == "Contact Omada | Leading Provider of IT Security Solutions");
             WaitForAllScriptsLoaded();
-            WaitForTextOnPage(CSS_ReadPrivacyCloseBtn);
-            ClickOn(CSS_ReadPrivacyCloseBtn);
+            WaitForTextOnPage(css_ReadPrivacyCloseBtn);
+            ClickOn(css_ReadPrivacyCloseBtn);
             ReflashThePage();
             WaitForAllScriptsLoaded();
-            CheckIsElementNotDisplayed(CSS_ReadPrivacyCloseBtn);
+            CheckIsElementNotDisplayed(css_ReadPrivacyCloseBtn);
             System.Threading.Thread.Sleep(4000);
         }
 

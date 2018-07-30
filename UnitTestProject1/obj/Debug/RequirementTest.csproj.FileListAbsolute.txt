@@ -24,4 +24,3 @@ C:\Users\tlugowski\Source\Repos\UnitTestProject1\UnitTestProject1\obj\Debug\Requ
 C:\Users\tlugowski\Source\Repos\UnitTestProject1\UnitTestProject1\obj\Debug\RequirementTest.csproj.CopyComplete
 C:\Users\tlugowski\Source\Repos\UnitTestProject1\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 C:\Users\tlugowski\Source\Repos\UnitTestProject1\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
-C:\Users\tlugowski\Source\Repos\UnitTestProject1\UnitTestProject1\obj\Debug\RequirementTest.csprojAssemblyReference.cache
