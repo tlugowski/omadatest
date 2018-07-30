@@ -177,7 +177,7 @@ namespace UnitTestProject1.Pages
             PageGoDown(5);
             WaitForTextOnPage(CSS_UnitedStatesWestText);
             WaitForAllScriptsLoaded();
-            CaptureGlobalScreenAndSave(@"D:\firstScreen.bmp");
+            CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["FirstScreenPath"]);
         }
 
 
@@ -230,7 +230,7 @@ namespace UnitTestProject1.Pages
 
         public void GoToPage()
         {
-            NavigateTo((@"https://www.omada.net/"));
+            NavigateTo(ConfigurationManager.AppSettings["url"]);
             WaitForAllScriptsLoaded();
             WaitForTextOnPage(css_copyright);
         }
