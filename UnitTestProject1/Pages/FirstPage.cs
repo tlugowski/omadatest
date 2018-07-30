@@ -154,7 +154,7 @@ namespace UnitTestProject1.Pages
         {
             WaitUntilElementClicable(css_GermanyBtn);
             int startYLocationInMap, oldXLocation, newXLocation, newYLocation;
-            NewMethod(out startYLocationInMap, out oldXLocation, out newXLocation, out newYLocation);
+            SetupLocation(out startYLocationInMap, out oldXLocation, out newXLocation, out newYLocation);
             GoToFirstLocation(startYLocationInMap, oldXLocation);
             WaitForAllScriptsLoaded();
             CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["FirstMapPositionPath"]);
@@ -163,7 +163,7 @@ namespace UnitTestProject1.Pages
             CaptureGlobalScreenAndSave(ConfigurationManager.AppSettings["SecondtMapPositionPath"]);
         }
 
-        private void NewMethod(out int startYLocationInMap, out int oldXLocation, out int newXLocation, out int newYLocation)
+        private void SetupLocation(out int startYLocationInMap, out int oldXLocation, out int newXLocation, out int newYLocation)
         {
             var locationGermanyButton = driver.FindElement(By.CssSelector(css_GermanyBtn)).Location;
             startYLocationInMap = locationGermanyButton.Y = locationGermanyButton.Y + 300;

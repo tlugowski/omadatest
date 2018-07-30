@@ -29,7 +29,7 @@ namespace UnitTestProject1
                 case "Chrome":
                     Driver = new ChromeDriver();
                     break;
-                case "FireFox":
+                case "Firefox":
                     Driver = new FirefoxDriver();
                     break;
             }
